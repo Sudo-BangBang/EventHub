@@ -1,9 +1,6 @@
 image: gitpod/workspace-postgres
 
 tasks:
-  - name: create tables in db
-    command: './init-db.sh'
-
   - name: run back-end
     openMode: split-left
     init: npm install
@@ -15,6 +12,9 @@ tasks:
       echo "REACT_APP_API_URL=$(gp url 3001)" > .env
       npm start
     openMode: split-right
+
+  - name: create tables in db
+    command: './init-db.sh'
 
 ports:
   - name: front-end
